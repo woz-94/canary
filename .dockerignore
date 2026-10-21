@@ -35,3 +35,17 @@ apply.patch
 # Keep the runtime image lighter. The entrypoint downloads this map on first run
 # through CANARY_MAP_URL when data-otservbr-global is selected.
 data-otservbr-global/world/otservbr.otbm
+
+# Not needed to compile or run the server
+docs/
+tests/
+vcproj/
+metrics/
+gdb_debug/
+*.md
+package.json
+Jenkinsfile
+recompile.sh
+start_gdb.sh
+client_assertions.txt
+sonar-project.properties
