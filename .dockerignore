@@ -38,7 +38,6 @@ data-otservbr-global/world/otservbr.otbm
 
 # Not needed to compile or run the server
 docs/
-tests/
 vcproj/
 metrics/
 gdb_debug/
