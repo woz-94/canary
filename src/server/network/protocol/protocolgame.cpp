@@ -8643,7 +8643,7 @@ void ProtocolGame::sendAddCreature(const std::shared_ptr<Creature> &creature, co
 	msg.add<uint32_t>(player->getID());
 	msg.add<uint16_t>(SERVER_BEAT); // beat duration (50)
 
-	if (version >= 981 && hasProtocolFeature(protocolProfile, ProtocolFeature::LoginSpeedFormula)) {
+	if (hasProtocolFeature(protocolProfile, ProtocolFeature::LoginSpeedFormula)) {
 		msg.addDouble(Creature::speedA, 3);
 		msg.addDouble(Creature::speedB, 3);
 		msg.addDouble(Creature::speedC, 3);
