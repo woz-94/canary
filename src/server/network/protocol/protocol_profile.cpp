@@ -253,7 +253,7 @@ namespace {
 		.itemMapperPolicy = ItemMapperPolicy::NotRequired,
 		.initialBehavior = cipsoft860CanaryExtendedInitialBehavior,
 		.assetSignatures = cipsoft860CanaryAssetSignatures,
-		.features = protocolFeatureMask(ProtocolFeature::OldProtocolCompat | ProtocolFeature::LegacyPayload | ProtocolFeature::ExtendedSpriteFiles | ProtocolFeature::MagicEffectU16 | ProtocolFeature::InlineLoginBugReportFlag),
+		.features = protocolFeatureMask(ProtocolFeature::OldProtocolCompat | ProtocolFeature::LegacyPayload | ProtocolFeature::ExtendedSpriteFiles | ProtocolFeature::MagicEffectU16 | ProtocolFeature::InlineLoginBugReportFlag | ProtocolFeature::LoginSpeedFormula),
 		.name = "cipsoft860canaryextended",
 		.supportLabel = "8.6",
 	};

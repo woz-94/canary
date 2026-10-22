@@ -8935,7 +8935,10 @@ void ProtocolGame::sendAddContainerItem(uint8_t cid, uint16_t slot, const std::s
 	NetworkMessage msg;
 	msg.addByte(0x70);
 	msg.addByte(cid);
-	msg.add<uint16_t>(slot);
+	const bool useLegacyContainerUpdate = oldProtocol && version < 984;
+	if (!useLegacyContainerUpdate) {
+		msg.add<uint16_t>(slot);
+	}
 	AddItem(msg, item);
 	writeToOutputBuffer(msg);
 }
@@ -8944,7 +8947,11 @@ void ProtocolGame::sendUpdateContainerItem(uint8_t cid, uint16_t slot, const std
 	NetworkMessage msg;
 	msg.addByte(0x71);
 	msg.addByte(cid);
-	msg.add<uint16_t>(slot);
+	if (oldProtocol && version < 984) {
+		msg.addByte(slot);
+	} else {
+		msg.add<uint16_t>(slot);
+	}
 	AddItem(msg, item);
 	writeToOutputBuffer(msg);
 }
@@ -8953,6 +8960,11 @@ void ProtocolGame::sendRemoveContainerItem(uint8_t cid, uint16_t slot, const std
 	NetworkMessage msg;
 	msg.addByte(0x72);
 	msg.addByte(cid);
+	if (oldProtocol && version < 984) {
+		msg.addByte(slot);
+		writeToOutputBuffer(msg);
+		return;
+	}
 	msg.add<uint16_t>(slot);
 	if (lastItem) {
 		AddItem(msg, lastItem);
